@@ -124,18 +124,18 @@ const LinerTeamsLanding: React.FC = () => {
   const features: Feature[] = [
     {
       icon: <Brain size={24} />,
-      title: 'AI 요약',
-      description: '긴 문서도 핵심만 빠르게 파악'
+      title: '정확성 1위',
+      description: 'SimpleQA 벤치마크에서 93.7로 1위 (Perplexity Pro·Gemini·GPT-4o 대비)'
     },
     {
       icon: <FileText size={24} />,
-      title: 'PDF 분석',
-      description: '논문과 보고서를 AI가 즉시 분석'
+      title: '문장 단위 인용',
+      description: 'Scholar Mode에서 Line-by-Line 인용과 APA/MLA/Chicago 원클릭 서지 제공'
     },
     {
       icon: <Share2 size={24} />,
-      title: '팀 공유',
-      description: '인사이트를 팀원과 실시간 공유'
+      title: '출처가 보이는 답변',
+      description: '답변-증거-참고문헌까지 한 흐름으로 팀 내 검증·재사용 속도 빠름'
     }
   ];
 
