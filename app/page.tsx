@@ -63,8 +63,7 @@ const LinerTeamsLanding: React.FC = () => {
     company: '',
     email: '',
     teamSize: '',
-    bank: '',
-    accountNumber: ''
+    phoneNumber: ''
   });
   const [timeLeft, setTimeLeft] = useState<TimeLeft>({
     days: 0,
@@ -167,11 +166,11 @@ const LinerTeamsLanding: React.FC = () => {
   // FAQ data
   const faqItems: FAQItem[] = [
     {
-      question: '환급은 어떻게 받나요?',
-      answer: '구독 후 30일 이내에 인증 양식을 제출하시면, 검토 후 1인당 5,000원을 환급해드립니다. 최소 2인 이상 팀 구독 시 적용됩니다.'
+      question: '스타벅스 기프티콘은 어떻게 받나요?',
+      answer: '구독 후 7일 이내에 인증 양식을 제출하시면, 검토 후 1좌석당 스타벅스 기프티콘 1개를 지급해드립니다. 최소 2인 이상 팀 구독 시 적용됩니다.'
     },
     {
-      question: '기존 개인 구독자도 환급 대상인가요?',
+      question: '기존 개인 구독자도 기프티콘 대상인가요?',
       answer: '이번 프로모션은 신규 팀즈 구독자를 대상으로 합니다. 기존 개인 구독에서 팀즈로 업그레이드하는 경우도 포함됩니다.'
     },
     {
@@ -180,7 +179,7 @@ const LinerTeamsLanding: React.FC = () => {
     },
     {
       question: '최소 구독 기간이 있나요?',
-      answer: '월 단위 구독이 가능하며, 연간 구독 시 20% 할인이 적용됩니다. 환급 프로모션은 1개월 이상 구독 시 적용됩니다.'
+      answer: '월 단위 구독이 가능하며, 연간 구독 시 20% 할인이 적용됩니다. 기프티콘 프로모션은 1개월 이상 구독 유지 시 적용됩니다.'
     }
   ];
 
@@ -202,8 +201,7 @@ const LinerTeamsLanding: React.FC = () => {
   const isFormValid = formData.company.trim() !== '' && 
                        formData.email.trim() !== '' && 
                        formData.teamSize.trim() !== '' && 
-                       formData.bank.trim() !== '' &&
-                       formData.accountNumber.trim() !== '';
+                       formData.phoneNumber.trim() !== '';
 
   const handleSubscribe = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -221,7 +219,7 @@ const LinerTeamsLanding: React.FC = () => {
       }
 
       setShowPopup(false);
-      setFormData({ company: '', email: '', teamSize: '', bank: '', accountNumber: '' });
+      setFormData({ company: '', email: '', teamSize: '', phoneNumber: '' });
       // 즉시 성공 메시지 표시 (자동 리다이렉션 없음)
       setShowSuccess(true);
     } catch (error) {
@@ -251,9 +249,6 @@ const LinerTeamsLanding: React.FC = () => {
               </button>
               <button onClick={() => scrollToSection('benefits')} className="text-gray-600 hover:text-gray-900 transition">
                 혜택
-              </button>
-              <button onClick={() => scrollToSection('testimonials')} className="text-gray-600 hover:text-gray-900 transition">
-                후기
               </button>
               <button onClick={() => scrollToSection('faq')} className="text-gray-600 hover:text-gray-900 transition">
                 FAQ
@@ -294,9 +289,9 @@ const LinerTeamsLanding: React.FC = () => {
             </div>
             
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-              팀즈 좌석 구독 시 1인당
+              팀즈 좌석 구독 시 1좌석당
               <br />
-              <span className="text-yellow-300">5,000원 환급</span> 🎁
+              <span className="text-yellow-300">스타벅스 기프티콘 1개</span> 🎁
             </h1>
             
             <p className="text-xl md:text-2xl text-blue-100 mb-8 max-w-2xl mx-auto">
@@ -331,60 +326,38 @@ const LinerTeamsLanding: React.FC = () => {
       </section>
 
       {/* LINER Introduction Section */}
-      <section id="about-liner" className="py-20 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="space-y-12">
-            {/* Section 1: Strong AI Research Engine */}
-            <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                강력한 AI 리서치 엔진
-              </h2>
-              <p className="text-lg text-gray-600 mb-4">
-                <span className="font-semibold text-gray-900">전 세계 1,100만 명이 사용하는 연구형 생성 AI</span>
-              </p>
-              <p className="text-gray-600 leading-relaxed">
-                LINER AI는 리서치에 특화된 생성형 AI 검색 엔진으로, <span className="font-semibold">정확한 출처와 근거 기반 답변</span>을 제공합니다.
-                <br />
-                <br />
-                2억 건 이상의 논문과 실시간 웹 데이터를 함께 검색해, 리서치·기획·아이디어 검증까지 단 한 번에 처리할 수 있습니다.
-              </p>
+      <section id="about-liner" className="py-20 bg-gradient-to-b from-white to-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Main Title */}
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center bg-blue-50 rounded-full px-4 py-2 mb-4">
+              <span className="text-sm font-medium text-blue-700">Why LINER?</span>
             </div>
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+              전 세계가 선택한 AI 리서치 파트너
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              1,100만 명의 연구자와 기업이 LINER와 함께 더 빠르고 정확한 인사이트를 얻고 있습니다
+            </p>
+          </div>
 
-            {/* Section 2: Global Recognition */}
-            <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                글로벌이 인정한 기술력
-              </h2>
-              <p className="text-lg text-gray-600 mb-4">
-                <span className="font-semibold text-gray-900">a16z 선정, 2024년 Top 100 GenAI Consumer Apps 웹 부문 4위</span>
-              </p>
-              <p className="text-gray-600 leading-relaxed">
-                연세대 컴퓨터과학과 출신 개발자가 설계한 LINER는 단순 하이라이터에서 시작해, <span className="font-semibold">검색·요약·인용이 결합된 리서치형 AI</span>로 진화했습니다.
-                <br />
-                <br />
-                미국의 수많은 창업팀과 연구기관이 정교한 기획을 위해 LINER를 사용하고 있습니다.
-              </p>
+          {/* Metrics Cards */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div className="bg-white rounded-2xl p-6 text-center shadow-lg hover:shadow-xl transition">
+              <div className="text-3xl md:text-4xl font-bold text-blue-600 mb-2">1,100만+</div>
+              <div className="text-gray-600">글로벌 사용자</div>
             </div>
-
-            {/* Section 3: Verified Accuracy */}
-            <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                검증된 정확도와 압도적인 속도
-              </h2>
-              <ul className="space-y-3 text-gray-600">
-                <li className="flex items-start">
-                  <span className="text-blue-600 font-bold mr-3">•</span>
-                  <span><span className="font-semibold">정보 정확도 95%</span>, SimpleQA 벤치마크에서 ChatGPT 대비 약 <span className="font-semibold">30% 높은 신뢰도</span></span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-blue-600 font-bold mr-3">•</span>
-                  <span><span className="font-semibold">답변 속도 10배 향상</span>, 기다림 없이 바로 결과 확인</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-blue-600 font-bold mr-3">•</span>
-                  <span><span className="font-semibold">가설 생성, 문헌 조사, 설문 시뮬레이션, 인용 추천</span>까지 한 번에</span>
-                </li>
-              </ul>
+            <div className="bg-white rounded-2xl p-6 text-center shadow-lg hover:shadow-xl transition">
+              <div className="text-3xl md:text-4xl font-bold text-green-600 mb-2">2억+</div>
+              <div className="text-gray-600">학술 논문 DB</div>
+            </div>
+            <div className="bg-white rounded-2xl p-6 text-center shadow-lg hover:shadow-xl transition">
+              <div className="text-3xl md:text-4xl font-bold text-purple-600 mb-2">95%</div>
+              <div className="text-gray-600">정보 정확도</div>
+            </div>
+            <div className="bg-white rounded-2xl p-6 text-center shadow-lg hover:shadow-xl transition">
+              <div className="text-3xl md:text-4xl font-bold text-orange-600 mb-2">10x</div>
+              <div className="text-gray-600">리서치 속도</div>
             </div>
           </div>
         </div>
@@ -482,10 +455,10 @@ const LinerTeamsLanding: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              환급 프로모션 상세 안내
+              스타벅스 기프티콘 프로모션 안내
             </h2>
             <p className="text-lg text-gray-600">
-              간단한 절차로 환급받으세요
+              간단한 절차로 기프티콘을 받으세요
             </p>
           </div>
           
@@ -519,7 +492,7 @@ const LinerTeamsLanding: React.FC = () => {
                       3
                     </span>
                     <div>
-                      <p className="font-medium text-gray-900">환급금 지급</p>
+                      <p className="font-medium text-gray-900">기프티콘 지급</p>
                       <p className="text-gray-600 text-sm mt-1">검토 후 7일 이내 지급</p>
                     </div>
                   </li>
@@ -537,78 +510,23 @@ const LinerTeamsLanding: React.FC = () => {
                   </li>
                   <li className="flex items-start">
                     <CheckCircle className="text-green-500 mr-3 flex-shrink-0 mt-0.5" size={20} />
-                    <span className="text-gray-700">1좌석당 5,000원 환급</span>
+                    <span className="text-gray-700">1좌석당 스타벅스 기프티콘 1개</span>
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle className="text-green-500 mr-3 flex-shrink-0 mt-0.5" size={20} />
+                    <span className="text-gray-700">1개월 이상 구독 유지</span>
                   </li>
                   <li className="flex items-start">
                     <CheckCircle className="text-green-500 mr-3 flex-shrink-0 mt-0.5" size={20} />
                     <span className="text-gray-700">2025년 11월 20일까지 신청</span>
                   </li>
                 </ul>
-                
-                <div className="mt-6 p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
-                  <p className="text-sm text-yellow-800">
-                    <strong>💡 Tip:</strong> 연간 구독 시 환급금과 별도로 20% 추가 할인!
-                  </p>
-                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Testimonials Section */}
-      <section id="testimonials" className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              이미 많은 팀이 사용 중입니다
-            </h2>
-            <p className="text-lg text-gray-600">
-              실제 사용자들의 생생한 후기
-            </p>
-          </div>
-          
-          <div className="grid md:grid-cols-3 gap-8">
-            {testimonials.map((testimonial, index) => (
-              <div 
-                key={index}
-                className="bg-gray-50 rounded-2xl p-8 hover:shadow-lg transition"
-              >
-                <div className="flex items-center mb-4">
-                  {renderStars(testimonial.rating)}
-                </div>
-                
-                <p className="text-gray-700 mb-6 italic">
-                  "{testimonial.content}"
-                </p>
-                
-                <div className="border-t pt-4">
-                  <p className="font-semibold text-gray-900">
-                    {testimonial.name}
-                  </p>
-                  <p className="text-sm text-gray-600">
-                    {testimonial.role} · {testimonial.company}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-          
-          {/* Logo Cloud */}
-          <div className="mt-16">
-            <p className="text-center text-gray-600 mb-8">
-              신뢰하는 기업 및 기관
-            </p>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 items-center justify-items-center opacity-60">
-              {['SKT에이닷', 'BC카드', 'LG U+', 'Lenovo'].map((company, index) => (
-                <div key={index} className="text-2xl font-bold text-gray-400">
-                  {company}
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* FAQ Section */}
       <section id="faq" className="py-20 bg-gray-50">
@@ -743,17 +661,9 @@ const LinerTeamsLanding: React.FC = () => {
               />
               <input
                 type="text"
-                placeholder="은행명 (예: 국민은행, 신한은행)"
-                value={formData.bank}
-                onChange={(e) => setFormData({ ...formData, bank: e.target.value })}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
-                required
-              />
-              <input
-                type="text"
-                placeholder="계좌번호"
-                value={formData.accountNumber}
-                onChange={(e) => setFormData({ ...formData, accountNumber: e.target.value })}
+                placeholder="전화번호 (숫자만 입력)"
+                value={formData.phoneNumber}
+                onChange={(e) => setFormData({ ...formData, phoneNumber: e.target.value.replace(/[^0-9]/g, '') })}
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
                 required
               />
@@ -787,10 +697,10 @@ const LinerTeamsLanding: React.FC = () => {
           <div className="bg-white rounded-2xl p-8 max-w-md w-full mx-4 shadow-2xl text-center">
             <div className="text-5xl mb-4">✅</div>
             <h3 className="text-2xl font-bold text-gray-900 mb-4">
-              환급 신청이 완료되었습니다!
+              신청이 완료되었습니다!
             </h3>
             <p className="text-gray-600 mb-6">
-              아래 링크에서 팀즈 플랜을 결제하면<br />자동으로 환급 혜택이 적용됩니다.
+              아래 링크에서 팀즈 플랜을 결제하면<br />스타벅스 기프티콘이 지급됩니다.
             </p>
             
             <a

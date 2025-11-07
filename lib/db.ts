@@ -5,8 +5,7 @@ export type Subscription = {
   company: string;
   email: string;
   teamsize: string;
-  bank: string;
-  accountnumber: string;
+  phonenumber: string;
   createdat: string;
 };
 
@@ -14,8 +13,7 @@ export type CreateSubscriptionInput = {
   company: string;
   email: string;
   teamSize: string;
-  bank: string;
-  accountNumber: string;
+  phoneNumber: string;
 };
 
 export class SubscriptionService {
@@ -23,9 +21,9 @@ export class SubscriptionService {
   static async createSubscription(data: CreateSubscriptionInput): Promise<Subscription> {
     try {
       const result = await sql<Subscription>`
-        INSERT INTO subscriptions (company, email, teamsize, bank, accountnumber)
-        VALUES (${data.company}, ${data.email}, ${data.teamSize}, ${data.bank}, ${data.accountNumber})
-        RETURNING id, company, email, teamsize, bank, accountnumber, createdat;
+        INSERT INTO subscriptions (company, email, teamsize, phonenumber)
+        VALUES (${data.company}, ${data.email}, ${data.teamSize}, ${data.phoneNumber})
+        RETURNING id, company, email, teamsize, phonenumber, createdat;
       `;
       
       if (!result.rows || result.rows.length === 0) {
@@ -43,7 +41,7 @@ export class SubscriptionService {
   static async getAllSubscriptions(): Promise<Subscription[]> {
     try {
       const result = await sql<Subscription>`
-        SELECT id, company, email, teamsize, bank, accountnumber, createdat
+        SELECT id, company, email, teamsize, phonenumber, createdat
         FROM subscriptions
         ORDER BY createdat DESC;
       `;
@@ -59,7 +57,7 @@ export class SubscriptionService {
   static async getSubscriptionById(id: number): Promise<Subscription | null> {
     try {
       const result = await sql<Subscription>`
-        SELECT id, company, email, teamsize, bank, accountnumber, createdat
+        SELECT id, company, email, teamsize, phonenumber, createdat
         FROM subscriptions
         WHERE id = ${id};
       `;

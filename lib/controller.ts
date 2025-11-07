@@ -11,8 +11,7 @@ export class SubscriptionController {
       typeof obj.company === 'string' && obj.company.trim().length > 0 &&
       typeof obj.email === 'string' && obj.email.trim().length > 0 &&
       typeof obj.teamSize === 'string' && obj.teamSize.trim().length > 0 &&
-      typeof obj.bank === 'string' && obj.bank.trim().length > 0 &&
-      typeof obj.accountNumber === 'string' && obj.accountNumber.trim().length > 0
+      typeof obj.phoneNumber === 'string' && obj.phoneNumber.trim().length > 0
     );
   }
 
