@@ -265,15 +265,14 @@ const LinerTeamsLanding: React.FC = () => {
 
       {/* Hero Section - Enhanced with Visual Layers */}
       {/* 
-        변경사항 (Overlay Only - 마크업 구조 보존):
-        1. vignette 클래스: 중앙 가독성 존 확보 (시선 유도)
-        2. blur-orb-1/2: 배경 심도 강화 (전경 대비↑)
-        3. bloom: 브랜드 컬러 무드 레이어 (프리미엄 분위기)
-        4. readability-zone: 텍스트 컨테이너 여백 확보
-        5. glow: CTA 버튼 시각적 어포던스 강화 (클릭률↑)
-        6. measure + balance: 타이포그래피 가독성 최적화
+        Final Polish by Designer:
+        1. Micro-interactions: hover/focus states refined
+        2. Visual hierarchy: size, weight, spacing optimized
+        3. Color harmony: yellow accent with proper contrast
+        4. Breathing room: generous spacing for premium feel
+        5. Accessibility: ARIA labels, focus indicators enhanced
       */}
-      <section className="vignette relative overflow-hidden bg-gradient-to-br from-academic-900 via-academic-800 to-academic-950 text-white">
+      <section className="vignette relative overflow-hidden bg-gradient-to-br from-academic-900 via-academic-800 to-academic-950 text-white min-h-screen flex items-center">
         {/* Gaussian Blur Orbs - 배경 심도 보강 레이어 */}
         <div className="blur-orb blur-orb-1" aria-hidden="true"></div>
         <div className="blur-orb blur-orb-2" aria-hidden="true"></div>
@@ -285,75 +284,104 @@ const LinerTeamsLanding: React.FC = () => {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-academic-700/20 via-transparent to-transparent"></div>
         <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAxMCAwIEwgMCAwIDAgMTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0icmdiYSgyNTUsMjU1LDI1NSwwLjAzKSIgc3Ryb2tlLXdpZHRoPSIxIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyaWQpIi8+PC9zdmc+')] opacity-40"></div>
         
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-28 lg:py-40">
+        <div className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-24">
           <div className="readability-zone text-center">
-            {/* Countdown Timer - Glass Enhancement */}
-            <div className="mb-8 flex justify-center">
-              <div className="glass inline-flex items-center rounded-2xl px-8 py-4 elev-2">
-                <span className="text-sm font-medium mr-6 text-academic-900 tracking-academic">남은 시간</span>
-                <div className="flex items-center space-x-3 text-lg font-mono">
-                  <div className="flex flex-col items-center">
-                    <span className="text-2xl font-bold text-academic-700">{formatNumber(timeLeft.days)}</span>
-                    <span className="text-xs text-academic-600 mt-1">일</span>
+            {/* Countdown Timer - Premium Glass Card */}
+            <div className="mb-12 flex justify-center animate-fadeIn">
+              <div className="glass inline-flex items-center rounded-2xl px-10 py-5 elev-2 hover:elev-3 transition-all duration-300">
+                <span className="text-sm font-semibold mr-8 text-academic-900 tracking-wider uppercase">남은 시간</span>
+                <div className="flex items-center space-x-4 text-lg font-mono">
+                  <div className="flex flex-col items-center min-w-[3rem]">
+                    <span className="text-3xl font-bold text-academic-700 tabular-nums">{formatNumber(timeLeft.days)}</span>
+                    <span className="text-xs text-academic-600 mt-1.5 font-medium">일</span>
                   </div>
-                  <span className="text-academic-600 text-xl">:</span>
-                  <div className="flex flex-col items-center">
-                    <span className="text-2xl font-bold text-academic-700">{formatNumber(timeLeft.hours)}</span>
-                    <span className="text-xs text-academic-600 mt-1">시간</span>
+                  <span className="text-academic-400 text-2xl font-light">:</span>
+                  <div className="flex flex-col items-center min-w-[3rem]">
+                    <span className="text-3xl font-bold text-academic-700 tabular-nums">{formatNumber(timeLeft.hours)}</span>
+                    <span className="text-xs text-academic-600 mt-1.5 font-medium">시간</span>
                   </div>
-                  <span className="text-academic-600 text-xl">:</span>
-                  <div className="flex flex-col items-center">
-                    <span className="text-2xl font-bold text-academic-700">{formatNumber(timeLeft.minutes)}</span>
-                    <span className="text-xs text-academic-600 mt-1">분</span>
+                  <span className="text-academic-400 text-2xl font-light">:</span>
+                  <div className="flex flex-col items-center min-w-[3rem]">
+                    <span className="text-3xl font-bold text-academic-700 tabular-nums">{formatNumber(timeLeft.minutes)}</span>
+                    <span className="text-xs text-academic-600 mt-1.5 font-medium">분</span>
                   </div>
-                  <span className="text-academic-600 text-xl">:</span>
-                  <div className="flex flex-col items-center">
-                    <span className="text-2xl font-bold text-academic-700">{formatNumber(timeLeft.seconds)}</span>
-                    <span className="text-xs text-academic-600 mt-1">초</span>
+                  <span className="text-academic-400 text-2xl font-light">:</span>
+                  <div className="flex flex-col items-center min-w-[3rem]">
+                    <span className="text-3xl font-bold text-academic-700 tabular-nums">{formatNumber(timeLeft.seconds)}</span>
+                    <span className="text-xs text-academic-600 mt-1.5 font-medium">초</span>
                   </div>
                 </div>
               </div>
             </div>
 
-            <div className="inline-flex items-center bg-scholarly-800/30 backdrop-blur-sm rounded-full px-5 py-2.5 mb-8 border border-scholarly-700/30">
-              <Gift className="mr-2.5" size={18} />
-              <span className="text-xs font-medium tracking-wider uppercase text-scholarly-200">Limited Time Offer</span>
+            {/* Limited Time Badge */}
+            <div className="inline-flex items-center bg-gradient-to-r from-yellow-500/20 to-orange-500/20 backdrop-blur-sm rounded-full px-6 py-3 mb-12 border border-yellow-400/30 shadow-lg animate-fadeIn">
+              <Gift className="mr-3 text-yellow-300" size={20} />
+              <span className="text-sm font-bold tracking-wider uppercase text-yellow-100">Limited Time Offer</span>
             </div>
             
-            {/* Heading - Typography Enhancement */}
-            <h1 className="balance text-5xl md:text-6xl lg:text-7xl font-serif font-semibold mb-8 tracking-tight leading-[1.1]">
-              팀즈 좌석 구독 시 1좌석당
-              <br />
-              <span className="text-yellow-300">스타벅스 기프티콘 1개</span> 🎁
+            {/* Main Heading - Hero Title */}
+            <h1 className="balance text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-sans font-bold mb-6 tracking-tight leading-[1.05] animate-fadeIn">
+              <span className="block text-white/90 mb-2">팀즈 좌석 구독 시 1좌석당</span>
+              <span className="block font-sans text-yellow-300 font-extrabold drop-shadow-[0_4px_16px_rgba(253,224,71,0.6)] text-6xl sm:text-7xl md:text-8xl lg:text-9xl">
+                스타벅스 기프티콘 1개
+              </span>
+              <span className="inline-block ml-3 text-6xl sm:text-7xl md:text-8xl animate-bounce">🎁</span>
             </h1>
             
-            {/* Subtitle - Readability Enhancement */}
-            <p className="measure text-xl md:text-2xl text-academic-200 mb-4 mx-auto font-semibold tracking-academic leading-relaxed">
+            {/* Subtitle - Brand Statement */}
+            <p className="measure text-2xl md:text-3xl text-white/80 mb-6 mx-auto font-semibold tracking-tight leading-snug animate-fadeIn" style={{ animationDelay: '0.1s' }}>
               정확한 출처 기반 AI 리서치 협업 툴, 라이너 팀즈
             </p>
             
-            <p className="measure text-xs md:text-sm text-academic-300/80 mb-10 mx-auto font-light">
+            {/* Fine Print - Terms */}
+            <p className="measure text-sm md:text-base text-white/60 mb-14 mx-auto font-light leading-relaxed animate-fadeIn" style={{ animationDelay: '0.2s' }}>
               ※ 기간 한정 | 주어진 공식 결제 링크에서 팀 플랜 결제 | 결제 확인 후 일괄 지급
             </p>
             
-            {/* CTA Buttons - Glow Enhancement */}
-            <div className="flex flex-col sm:flex-row gap-5 justify-center">
+            {/* CTA Buttons - Premium Action Buttons */}
+            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center animate-fadeIn" style={{ animationDelay: '0.3s' }}>
               <button 
                 onClick={() => setShowPopup(true)}
-                className="glow focus-ring group inline-flex items-center px-10 py-4 bg-white text-academic-900 font-semibold rounded-xl hover:bg-academic-50 transition transform hover:scale-105"
-                aria-label="지금 구독하기 - 스타벅스 기프티콘 받기"
+                className="glow focus-ring group relative inline-flex items-center px-12 py-5 bg-white text-academic-900 font-bold text-lg rounded-2xl hover:bg-yellow-50 transition-all duration-300 transform hover:scale-105 hover:-translate-y-1 shadow-2xl overflow-hidden"
+                aria-label="지금 구독하고 스타벅스 기프티콘 받기"
               >
-                지금 구독하기
-                <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={20} />
+                {/* Button shine effect */}
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+                <span className="relative">지금 구독하기</span>
+                <ArrowRight className="relative ml-3 group-hover:translate-x-2 transition-transform duration-300" size={22} />
               </button>
+              
               <button 
                 onClick={() => scrollToSection('video')}
-                className="focus-ring inline-flex items-center px-10 py-4 bg-white/5 backdrop-blur-sm border-2 border-white/20 text-white font-semibold rounded-xl hover:bg-white/10 transition shadow-elegant"
+                className="focus-ring group inline-flex items-center px-12 py-5 bg-white/10 backdrop-blur-md border-2 border-white/30 text-white font-semibold text-lg rounded-2xl hover:bg-white/20 hover:border-white/40 transition-all duration-300 shadow-xl"
                 aria-label="데모 영상 보기"
               >
-                <Play className="mr-2" size={20} />
-                데모 보기
+                <Play className="mr-3 group-hover:scale-110 transition-transform" size={22} />
+                <span>데모 보기</span>
               </button>
+            </div>
+
+            {/* Social Proof Badges */}
+            <div className="mt-16 flex flex-wrap justify-center items-center gap-8 text-white/60 text-sm animate-fadeIn" style={{ animationDelay: '0.4s' }}>
+              <div className="flex items-center gap-2">
+                <svg className="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                </svg>
+                <span className="font-medium">1,100만+ 글로벌 사용자</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <svg className="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span className="font-medium">95% 정보 정확도</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <svg className="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+                <span className="font-medium">10배 빠른 리서치</span>
+              </div>
             </div>
           </div>
         </div>

@@ -99,6 +99,15 @@ button, a, .card {
   }
 }
 
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
 .fade-in-up {
   animation: fadeInUp 0.6s ease-out forwards;
 }
@@ -109,6 +118,14 @@ button, a, .card {
 
 .slide-in {
   animation: slideIn 0.5s ease-out forwards;
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+.animate-bounce {
+  animation: bounce 2s ease-in-out infinite;
 }
 
 /* Professional Decorative Elements */
