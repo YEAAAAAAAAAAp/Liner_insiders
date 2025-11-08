@@ -272,7 +272,7 @@ const LinerTeamsLanding: React.FC = () => {
         4. Breathing room: generous spacing for premium feel
         5. Accessibility: ARIA labels, focus indicators enhanced
       */}
-      <section className="vignette relative overflow-hidden bg-gradient-to-br from-academic-900 via-academic-800 to-academic-950 text-white min-h-screen flex items-center">
+      <section className="vignette relative overflow-hidden bg-gradient-to-br from-academic-900 via-academic-800 to-academic-950 text-white">
         {/* Gaussian Blur Orbs - 배경 심도 보강 레이어 */}
         <div className="blur-orb blur-orb-1" aria-hidden="true"></div>
         <div className="blur-orb blur-orb-2" aria-hidden="true"></div>
@@ -284,10 +284,10 @@ const LinerTeamsLanding: React.FC = () => {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-academic-700/20 via-transparent to-transparent"></div>
         <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAxMCAwIEwgMCAwIDAgMTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0icmdiYSgyNTUsMjU1LDI1NSwwLjAzKSIgc3Ryb2tlLXdpZHRoPSIxIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyaWQpIi8+PC9zdmc+')] opacity-40"></div>
         
-        <div className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-24">
-          <div className="readability-zone text-center">
+        <div className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
+          <div className="text-center space-y-8">
             {/* Countdown Timer - Premium Glass Card */}
-            <div className="mb-12 flex justify-center animate-fadeIn">
+            <div className="flex justify-center animate-fadeIn">
               <div className="glass inline-flex items-center rounded-2xl px-10 py-5 elev-2 hover:elev-3 transition-all duration-300">
                 <span className="text-sm font-semibold mr-8 text-academic-900 tracking-wider uppercase">남은 시간</span>
                 <div className="flex items-center space-x-4 text-lg font-mono">
@@ -315,32 +315,32 @@ const LinerTeamsLanding: React.FC = () => {
             </div>
 
             {/* Limited Time Badge */}
-            <div className="inline-flex items-center bg-gradient-to-r from-yellow-500/20 to-orange-500/20 backdrop-blur-sm rounded-full px-6 py-3 mb-12 border border-yellow-400/30 shadow-lg animate-fadeIn">
+            <div className="inline-flex items-center bg-gradient-to-r from-yellow-500/20 to-orange-500/20 backdrop-blur-sm rounded-full px-6 py-3 border border-yellow-400/30 shadow-lg animate-fadeIn">
               <Gift className="mr-3 text-yellow-300" size={20} />
               <span className="text-sm font-bold tracking-wider uppercase text-yellow-100">Limited Time Offer</span>
             </div>
             
             {/* Main Heading - Hero Title */}
-            <h1 className="balance text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-sans font-bold mb-6 tracking-tight leading-[1.05] animate-fadeIn">
-              <span className="block text-white/90 mb-2">팀즈 좌석 구독 시 1좌석당</span>
-              <span className="block font-sans text-yellow-300 font-extrabold drop-shadow-[0_4px_16px_rgba(253,224,71,0.6)] text-6xl sm:text-7xl md:text-8xl lg:text-9xl">
+            <h1 className="balance text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-sans font-bold tracking-tight leading-[1.05] animate-fadeIn">
+              <span className="block text-white/90 mb-3">팀즈 좌석 구독 시 1좌석당</span>
+              <span className="block font-sans text-yellow-300 font-extrabold drop-shadow-[0_4px_16px_rgba(253,224,71,0.6)] text-5xl sm:text-6xl md:text-7xl lg:text-8xl">
                 스타벅스 기프티콘 1개
               </span>
-              <span className="inline-block ml-3 text-6xl sm:text-7xl md:text-8xl animate-bounce">🎁</span>
+              <span className="inline-block ml-3 text-5xl sm:text-6xl md:text-7xl animate-bounce">🎁</span>
             </h1>
             
             {/* Subtitle - Brand Statement */}
-            <p className="measure text-2xl md:text-3xl text-white/80 mb-6 mx-auto font-semibold tracking-tight leading-snug animate-fadeIn" style={{ animationDelay: '0.1s' }}>
+            <p className="measure text-xl md:text-2xl text-white/80 mx-auto font-semibold tracking-tight leading-snug animate-fadeIn" style={{ animationDelay: '0.1s' }}>
               정확한 출처 기반 AI 리서치 협업 툴, 라이너 팀즈
             </p>
             
             {/* Fine Print - Terms */}
-            <p className="measure text-sm md:text-base text-white/60 mb-14 mx-auto font-light leading-relaxed animate-fadeIn" style={{ animationDelay: '0.2s' }}>
+            <p className="measure text-sm md:text-base text-white/60 mx-auto font-light leading-relaxed animate-fadeIn" style={{ animationDelay: '0.2s' }}>
               ※ 기간 한정 | 주어진 공식 결제 링크에서 팀 플랜 결제 | 결제 확인 후 일괄 지급
             </p>
             
             {/* CTA Buttons - Premium Action Buttons */}
-            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center animate-fadeIn" style={{ animationDelay: '0.3s' }}>
+            <div className="flex flex-col sm:flex-row gap-5 justify-center items-center animate-fadeIn" style={{ animationDelay: '0.3s' }}>
               <button 
                 onClick={() => setShowPopup(true)}
                 className="glow focus-ring group relative inline-flex items-center px-12 py-5 bg-white text-academic-900 font-bold text-lg rounded-2xl hover:bg-yellow-50 transition-all duration-300 transform hover:scale-105 hover:-translate-y-1 shadow-2xl overflow-hidden"
@@ -363,7 +363,7 @@ const LinerTeamsLanding: React.FC = () => {
             </div>
 
             {/* Social Proof Badges */}
-            <div className="mt-16 flex flex-wrap justify-center items-center gap-8 text-white/60 text-sm animate-fadeIn" style={{ animationDelay: '0.4s' }}>
+            <div className="flex flex-wrap justify-center items-center gap-6 text-white/60 text-sm animate-fadeIn" style={{ animationDelay: '0.4s' }}>
               <div className="flex items-center gap-2">
                 <svg className="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
                   <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
