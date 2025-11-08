@@ -263,36 +263,53 @@ const LinerTeamsLanding: React.FC = () => {
         </div>
       </nav>
 
-      {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-academic-900 via-academic-800 to-academic-950 text-white">
+      {/* Hero Section - Enhanced with Visual Layers */}
+      {/* 
+        변경사항 (Overlay Only - 마크업 구조 보존):
+        1. vignette 클래스: 중앙 가독성 존 확보 (시선 유도)
+        2. blur-orb-1/2: 배경 심도 강화 (전경 대비↑)
+        3. bloom: 브랜드 컬러 무드 레이어 (프리미엄 분위기)
+        4. readability-zone: 텍스트 컨테이너 여백 확보
+        5. glow: CTA 버튼 시각적 어포던스 강화 (클릭률↑)
+        6. measure + balance: 타이포그래피 가독성 최적화
+      */}
+      <section className="vignette relative overflow-hidden bg-gradient-to-br from-academic-900 via-academic-800 to-academic-950 text-white">
+        {/* Gaussian Blur Orbs - 배경 심도 보강 레이어 */}
+        <div className="blur-orb blur-orb-1" aria-hidden="true"></div>
+        <div className="blur-orb blur-orb-2" aria-hidden="true"></div>
+        
+        {/* Bloom Layer - 브랜드 무드 발광 블롭 */}
+        <div className="bloom" style={{ top: '10%', left: '20%' }} aria-hidden="true"></div>
+        
+        {/* Existing Background Layers */}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-academic-700/20 via-transparent to-transparent"></div>
         <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAxMCAwIEwgMCAwIDAgMTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0icmdiYSgyNTUsMjU1LDI1NSwwLjAzKSIgc3Ryb2tlLXdpZHRoPSIxIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyaWQpIi8+PC9zdmc+')] opacity-40"></div>
         
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-28 lg:py-40">
-          <div className="text-center">
-            {/* Countdown Timer */}
+          <div className="readability-zone text-center">
+            {/* Countdown Timer - Glass Enhancement */}
             <div className="mb-8 flex justify-center">
-              <div className="inline-flex items-center bg-white/5 backdrop-blur-md rounded-2xl px-8 py-4 border border-white/10 shadow-elegant">
-                <span className="text-sm font-medium mr-6 text-academic-200 tracking-academic">남은 시간</span>
+              <div className="glass inline-flex items-center rounded-2xl px-8 py-4 elev-2">
+                <span className="text-sm font-medium mr-6 text-academic-900 tracking-academic">남은 시간</span>
                 <div className="flex items-center space-x-3 text-lg font-mono">
                   <div className="flex flex-col items-center">
-                    <span className="text-2xl font-bold text-yellow-300">{formatNumber(timeLeft.days)}</span>
-                    <span className="text-xs text-white/60 mt-1">일</span>
+                    <span className="text-2xl font-bold text-academic-700">{formatNumber(timeLeft.days)}</span>
+                    <span className="text-xs text-academic-600 mt-1">일</span>
                   </div>
-                  <span className="text-yellow-300/50 text-xl">:</span>
+                  <span className="text-academic-600 text-xl">:</span>
                   <div className="flex flex-col items-center">
-                    <span className="text-2xl font-bold text-yellow-300">{formatNumber(timeLeft.hours)}</span>
-                    <span className="text-xs text-white/60 mt-1">시간</span>
+                    <span className="text-2xl font-bold text-academic-700">{formatNumber(timeLeft.hours)}</span>
+                    <span className="text-xs text-academic-600 mt-1">시간</span>
                   </div>
-                  <span className="text-yellow-300/50 text-xl">:</span>
+                  <span className="text-academic-600 text-xl">:</span>
                   <div className="flex flex-col items-center">
-                    <span className="text-2xl font-bold text-yellow-300">{formatNumber(timeLeft.minutes)}</span>
-                    <span className="text-xs text-white/60 mt-1">분</span>
+                    <span className="text-2xl font-bold text-academic-700">{formatNumber(timeLeft.minutes)}</span>
+                    <span className="text-xs text-academic-600 mt-1">분</span>
                   </div>
-                  <span className="text-yellow-300/50 text-xl">:</span>
+                  <span className="text-academic-600 text-xl">:</span>
                   <div className="flex flex-col items-center">
-                    <span className="text-2xl font-bold text-yellow-300">{formatNumber(timeLeft.seconds)}</span>
-                    <span className="text-xs text-white/60 mt-1">초</span>
+                    <span className="text-2xl font-bold text-academic-700">{formatNumber(timeLeft.seconds)}</span>
+                    <span className="text-xs text-academic-600 mt-1">초</span>
                   </div>
                 </div>
               </div>
@@ -303,31 +320,36 @@ const LinerTeamsLanding: React.FC = () => {
               <span className="text-xs font-medium tracking-wider uppercase text-scholarly-200">Limited Time Offer</span>
             </div>
             
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif font-semibold mb-8 tracking-tight leading-tight">
+            {/* Heading - Typography Enhancement */}
+            <h1 className="balance text-5xl md:text-6xl lg:text-7xl font-serif font-semibold mb-8 tracking-tight leading-[1.1]">
               팀즈 좌석 구독 시 1좌석당
               <br />
               <span className="text-yellow-300">스타벅스 기프티콘 1개</span> 🎁
             </h1>
             
-            <p className="text-xl md:text-2xl text-academic-200 mb-4 max-w-2xl mx-auto font-semibold tracking-academic">
+            {/* Subtitle - Readability Enhancement */}
+            <p className="measure text-xl md:text-2xl text-academic-200 mb-4 mx-auto font-semibold tracking-academic leading-relaxed">
               정확한 출처 기반 AI 리서치 협업 툴, 라이너 팀즈
             </p>
             
-            <p className="text-xs md:text-sm text-academic-300/80 mb-10 max-w-2xl mx-auto font-light">
+            <p className="measure text-xs md:text-sm text-academic-300/80 mb-10 mx-auto font-light">
               ※ 기간 한정 | 주어진 공식 결제 링크에서 팀 플랜 결제 | 결제 확인 후 일괄 지급
             </p>
             
+            {/* CTA Buttons - Glow Enhancement */}
             <div className="flex flex-col sm:flex-row gap-5 justify-center">
               <button 
                 onClick={() => setShowPopup(true)}
-                className="group inline-flex items-center px-10 py-4 bg-white text-academic-900 font-semibold rounded-xl hover:bg-academic-50 transition transform hover:scale-105 shadow-elegant-lg hover:shadow-2xl"
+                className="glow focus-ring group inline-flex items-center px-10 py-4 bg-white text-academic-900 font-semibold rounded-xl hover:bg-academic-50 transition transform hover:scale-105"
+                aria-label="지금 구독하기 - 스타벅스 기프티콘 받기"
               >
                 지금 구독하기
                 <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={20} />
               </button>
               <button 
                 onClick={() => scrollToSection('video')}
-                className="inline-flex items-center px-10 py-4 bg-white/5 backdrop-blur-sm border-2 border-white/20 text-white font-semibold rounded-xl hover:bg-white/10 transition shadow-elegant"
+                className="focus-ring inline-flex items-center px-10 py-4 bg-white/5 backdrop-blur-sm border-2 border-white/20 text-white font-semibold rounded-xl hover:bg-white/10 transition shadow-elegant"
+                aria-label="데모 영상 보기"
               >
                 <Play className="mr-2" size={20} />
                 데모 보기
