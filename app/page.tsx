@@ -71,6 +71,8 @@ const LinerTeamsLanding: React.FC = () => {
     minutes: 0,
     seconds: 0
   });
+  const videoRef = React.useRef<HTMLVideoElement>(null);
+  const videoSectionRef = React.useRef<HTMLDivElement>(null);
 
   // Countdown timer effect
   useEffect(() => {
@@ -95,6 +97,47 @@ const LinerTeamsLanding: React.FC = () => {
     const timer = setInterval(calculateTimeLeft, 1000);
     return () => clearInterval(timer);
   }, []);
+
+  // Video auto-play on scroll effect
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && videoRef.current && !isVideoPlaying) {
+            // 섹션이 보이면 자동 재생
+            setIsVideoPlaying(true);
+            // 약간의 지연 후 재생 시도 (DOM 업데이트 대기)
+            setTimeout(() => {
+              if (videoRef.current) {
+                videoRef.current.play().catch(err => {
+                  console.log('Auto-play failed:', err);
+                  // 자동 재생 실패 시 사용자가 클릭할 수 있도록 상태 유지
+                });
+              }
+            }, 100);
+          } else if (!entry.isIntersecting && videoRef.current) {
+            // 섹션을 벗어나면 일시정지
+            videoRef.current.pause();
+            setIsVideoPlaying(false);
+          }
+        });
+      },
+      { 
+        threshold: 0.3, // 30% 이상 보일 때 트리거 (더 빠른 반응)
+        rootMargin: '0px' 
+      }
+    );
+
+    if (videoSectionRef.current) {
+      observer.observe(videoSectionRef.current);
+    }
+
+    return () => {
+      if (videoSectionRef.current) {
+        observer.unobserve(videoSectionRef.current);
+      }
+    };
+  }, [isVideoPlaying]);
 
   const formatNumber = (num: number): string => {
     return num.toString().padStart(2, '0');
@@ -492,7 +535,7 @@ const LinerTeamsLanding: React.FC = () => {
       </section>
 
       {/* Video Section */}
-      <section id="video" className="pt-32 pb-28 bg-white relative">
+      <section id="video" className="pt-32 pb-28 bg-white relative" ref={videoSectionRef}>
         {/* Decorative Top Border */}
         <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-academic-300 to-transparent"></div>
         
@@ -521,13 +564,39 @@ const LinerTeamsLanding: React.FC = () => {
             <div className="absolute bottom-4 left-4 w-12 h-12 border-b-2 border-l-2 border-academic-300/30 rounded-bl-lg"></div>
             <div className="absolute bottom-4 right-4 w-12 h-12 border-b-2 border-r-2 border-academic-300/30 rounded-br-lg"></div>
             
-            {!isVideoPlaying ? (
-              <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-academic-800 via-academic-900 to-academic-950">
+            {/* Video with thumbnail */}
+            <video 
+              ref={videoRef}
+              className="w-full h-full" 
+              controls={isVideoPlaying}
+              playsInline
+              preload="metadata"
+              poster="/demo-video.mp4#t=0.1"
+              onClick={() => {
+                if (!isVideoPlaying) {
+                  setIsVideoPlaying(true);
+                  videoRef.current?.play();
+                }
+              }}
+            >
+              <source src="/demo-video.mp4" type="video/mp4" />
+              <p className="text-white text-center p-8">
+                죄송합니다. 브라우저가 비디오 재생을 지원하지 않습니다.
+              </p>
+            </video>
+
+            {/* Play button overlay - only shown when not playing */}
+            {!isVideoPlaying && (
+              <div className="absolute inset-0 flex items-center justify-center bg-academic-900/40 backdrop-blur-sm cursor-pointer"
+                onClick={() => {
+                  setIsVideoPlaying(true);
+                  videoRef.current?.play();
+                }}
+              >
                 {/* Background Pattern */}
-                <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAxMCAwIEwgMCAwIDAgMTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0icmdiYSgyNTUsMjU1LDI1NSwwLjAzKSIgc3Ryb2tlLXdpZHRoPSIxIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyaWQpIi8+PC9zdmc+')] opacity-40"></div>
+                <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAxMCAwIEwgMCAwIDAgMTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0icmdiYSgyNTUsMjU1LDI1NSwwLjAzKSIgc3Ryb2tlLXdpZHRoPSIxIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyaWQpIi8+PC9zdmc+')] opacity-20"></div>
                 
                 <button
-                  onClick={() => setIsVideoPlaying(true)}
                   className="group/play relative z-10"
                 >
                   <div className="absolute inset-0 bg-white rounded-full scale-100 group-hover/play:scale-110 animate-ping opacity-20"></div>
@@ -539,11 +608,6 @@ const LinerTeamsLanding: React.FC = () => {
                   </div>
                 </button>
               </div>
-            ) : (
-              <video className="w-full h-full" controls autoPlay>
-                <source src="/demo-video.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
             )}
           </div>
         </div>
