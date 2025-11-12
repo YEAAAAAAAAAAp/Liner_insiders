@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
 import { 
   Play, 
   Star, 
@@ -504,15 +505,19 @@ const LinerTeamsLanding: React.FC = () => {
               <div className="absolute -top-4 -right-4 w-24 h-24 bg-academic-100 rounded-3xl -z-10 transform rotate-12"></div>
               <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-scholarly-100 rounded-3xl -z-10 transform -rotate-12"></div>
               
-              <div className="aspect-square bg-gradient-to-br from-academic-100 via-scholarly-100 to-academic-50 rounded-3xl p-12 shadow-elegant-lg border border-academic-200 relative overflow-hidden">
+              <div className="aspect-square bg-gradient-to-br from-academic-100 via-scholarly-100 to-academic-50 rounded-3xl p-6 md:p-8 shadow-elegant-lg border border-academic-200 relative overflow-hidden">
                 {/* Grid Pattern Overlay */}
                 <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAwIDEwIEwgNDAgMTAgTSAxMCAwIEwgMTAgNDAgTSAwIDIwIEwgNDAgMjAgTSAyMCAwIEwgMjAgNDAgTSAwIDMwIEwgNDAgMzAgTSAzMCAwIEwgMzAgNDAiIGZpbGw9Im5vbmUiIHN0cm9rZT0icmdiYSgxMDIsMTE1LDE1MSwwLjA1KSIgc3Ryb2tlLXdpZHRoPSIxIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyaWQpIi8+PC9zdmc+')] opacity-30"></div>
                 
-                <img 
-                  src="/dashboard-mockup.png" 
-                  alt="LINER Teams Dashboard"
-                  className="w-full h-full object-contain opacity-90 relative z-10 drop-shadow-2xl"
-                />
+                <div className="relative w-full h-full">
+                  <Image 
+                    src="/dashboard-mockup.png" 
+                    alt="LINER Teams Dashboard"
+                    fill
+                    className="object-contain opacity-90 drop-shadow-2xl"
+                    priority
+                  />
+                </div>
               </div>
               
               {/* Floating Badge */}
